@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:user_project/app_widget.dart';
+import 'package:user_project/app_injector.dart';
 
 void main() {
-  runApp(const AppWidget());
+  runApp(const AppInjector());
 }

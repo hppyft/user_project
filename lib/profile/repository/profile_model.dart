@@ -1,11 +1,24 @@
 class ProfileModel {
-  final String name;
-  final String email;
-  final String avatarUrl;
+  late final String name;
+  late final String email;
+  late final String avatarUrl;
 
   ProfileModel({
     required this.name,
     required this.email,
     required this.avatarUrl,
   });
+
+  ProfileModel.fromMap(Map<String, dynamic> map) {
+    var results = map['results'];
+    var firstResult = results[0];
+
+    var objectName = firstResult['name'];
+    name = '${objectName['first']} ${objectName['last']}';
+
+    email = firstResult['email'];
+
+    var picture = firstResult['picture'];
+    avatarUrl = picture['thumbnail'];
+  }
 }
