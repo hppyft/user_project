@@ -18,6 +18,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   dio: ^4.0.6
   shimmer: ^2.0.0
+  connectivity_plus: ^2.3.6
 
 dev_dependencies:
   flutter_test:
