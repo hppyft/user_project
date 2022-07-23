@@ -1,13 +1,18 @@
 part of '../profile_page.dart';
 
 class _ProfileName extends StatelessWidget {
-  const _ProfileName({Key? key}) : super(key: key);
+  final String name;
+
+  const _ProfileName({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      'Leonardo Soares',
-      style: TextStyle(
+    return Text(
+      name,
+      style: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
