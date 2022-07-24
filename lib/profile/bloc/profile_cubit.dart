@@ -27,7 +27,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         final ProfileModel profile = await _repository.getRandomProfile();
         emit(ProfileLoaded(profile: profile));
       }
-    } catch (e) {
+    } catch (_) {
       emit(const ErrorLoadingProfile(
           message:
               'Ocorreu um erro ao tentar resgatar o perfil, por favor tente novamente.'));
