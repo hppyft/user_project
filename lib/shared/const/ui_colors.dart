@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class UIColors {
   static const white = Color(0xFFFFFFFF);
+  static const black = Color(0xFF000000);
   static const drawerBlue = Color(0xFF5DA3FA);
   static const errorRed = Color(0xFFE21717);
   static const backgroundGrey = Color(0xFFEEEEEE);

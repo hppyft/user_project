@@ -6,6 +6,7 @@ import 'package:user_project/profile/bloc/profile_cubit.dart';
 import 'package:user_project/profile/bloc/profile_state.dart';
 import 'package:user_project/profile/repository/profile_model.dart';
 import 'package:user_project/shared/const/ui_colors.dart';
+import 'package:user_project/shared/widget/avatar_image.dart';
 import 'package:user_project/shared/widget/default_card.dart';
 import 'package:user_project/shared/widget/default_drawer/default_drawer.dart';
 import 'package:user_project/shared/widget/default_drawer/default_drawer_item.dart';

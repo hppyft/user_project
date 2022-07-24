@@ -10,11 +10,6 @@ class _ProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(999.0),
-      child: Image.network(
-        avatarUrl,
-      ),
-    );
+    return AvatarImage(avatarUrl: avatarUrl);
   }
 }
