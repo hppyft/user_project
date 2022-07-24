@@ -1,7 +1,7 @@
 part of '../profile_page.dart';
 
-class _LoadingProfileLayout extends StatelessWidget {
-  const _LoadingProfileLayout({Key? key}) : super(key: key);
+class _ProfileLoadingLayout extends StatelessWidget {
+  const _ProfileLoadingLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

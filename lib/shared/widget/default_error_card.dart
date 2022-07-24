@@ -1,16 +1,17 @@
-part of '../profile_page.dart';
+import 'package:flutter/material.dart';
+import 'package:user_project/shared/const/ui_colors.dart';
+import 'package:user_project/shared/widget/default_card.dart';
+import 'package:user_project/shared/widget/vertical_spacer.dart';
 
-class _ErrorLayout extends StatelessWidget {
+class DefaultErrorCard extends StatelessWidget {
   final String message;
+  final void Function(BuildContext) reload;
 
-  const _ErrorLayout({
+  const DefaultErrorCard({
     Key? key,
     required this.message,
+    required this.reload,
   }) : super(key: key);
-
-  void _reloadProfile(BuildContext context) {
-    BlocProvider.of<ProfileCubit>(context).reloadProfile();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _ErrorLayout extends StatelessWidget {
           ),
           const VerticalSpacer(height: 24),
           ElevatedButton(
-              onPressed: () => _reloadProfile(context),
+              onPressed: () => reload(context),
               child: const Text('Recarregar'))
         ],
       ),

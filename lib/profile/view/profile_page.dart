@@ -10,6 +10,7 @@ import 'package:user_project/shared/widget/avatar_image.dart';
 import 'package:user_project/shared/widget/default_card.dart';
 import 'package:user_project/shared/widget/default_drawer/default_drawer.dart';
 import 'package:user_project/shared/widget/default_drawer/default_drawer_item.dart';
+import 'package:user_project/shared/widget/default_error_card.dart';
 import 'package:user_project/shared/widget/shimmer_item.dart';
 import 'package:user_project/shared/widget/vertical_spacer.dart';
 
@@ -21,9 +22,9 @@ part 'widget/profile_name.dart';
 
 part 'widget/profile_email.dart';
 
-part 'widget/error_layout.dart';
+part 'widget/profile_error_layout.dart';
 
-part 'widget/loading_profile_layout.dart';
+part 'widget/profile_loading_layout.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -57,9 +58,9 @@ class ProfilePage extends StatelessWidget {
                 if (state is ProfileLoaded) {
                   return _ProfileCard(profileModel: state.profile);
                 } else if (state is ErrorLoadingProfile) {
-                  return _ErrorLayout(message: state.message);
+                  return _ProfileErrorLayout(message: state.message);
                 } else {
-                  return const _LoadingProfileLayout();
+                  return const _ProfileLoadingLayout();
                 }
               },
             ),
