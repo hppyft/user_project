@@ -12,8 +12,8 @@ class ProfileInjection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<ProfileCubit>(
       create: (context) => ProfileCubit(
-        profileRepository: ProfileRepositoryImplementation(httpClient: context.read<BaseDio>())
-      )..loadProfile(),
+          profileRepository: ProfileRepositoryImplementation(
+              httpClient: context.read<BaseDio>())),
       child: const ProfilePage(),
     );
   }

@@ -15,7 +15,7 @@ class FriendsInjection extends StatelessWidget {
         repository: FriendsRepositoryImplementation(
           httpClient: context.read<BaseDio>(),
         ),
-      )..loadFriends(),
+      ),
       child: const FriendsPage(),
     );
   }

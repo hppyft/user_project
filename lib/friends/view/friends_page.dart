@@ -21,8 +21,28 @@ part 'widget/friends_loading_layout.dart';
 class FriendsPage extends StatelessWidget {
   const FriendsPage({Key? key}) : super(key: key);
 
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Text(message),
+        elevation: 24,
+        shape: const RoundedRectangleBorder(),
+        actions: [
+          TextButton(
+            onPressed: Navigator.of(context).pop,
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<FriendsCubit>().loadFriends();
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Amigos'),
@@ -31,7 +51,12 @@ class FriendsPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: BlocBuilder<FriendsCubit, FriendsState>(
+          child: BlocConsumer<FriendsCubit, FriendsState>(
+            listener: (context, state) {
+              if (state is ErrorLoadingFriends) {
+                _showErrorDialog(context, state.message);
+              }
+            },
             builder: (context, state) {
               if (state is FriendsLoaded) {
                 return _FriendsList(friends: state.modelList);

@@ -6,7 +6,7 @@ import 'package:user_project/friends/repository/friends_repository.dart';
 
 class FriendsCubit extends Cubit<FriendsState> {
   final FriendsRepository _repository;
-  final int friendsQuantity = 15;
+  final int _friendsQuantity = 15;
 
   FriendsCubit({required FriendsRepository repository})
       : _repository = repository,
@@ -26,7 +26,7 @@ class FriendsCubit extends Cubit<FriendsState> {
                 'Parece que você não está conectado a internet, por favor conecte-se e tente novamente.'));
       } else {
         List<FriendsModel> modelList =
-            await _repository.getRandomFriends(friendsQuantity);
+            await _repository.getRandomFriends(_friendsQuantity);
         emit(FriendsLoaded(modelList: modelList));
       }
     } catch (_) {

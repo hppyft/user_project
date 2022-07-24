@@ -29,8 +29,28 @@ part 'widget/profile_loading_layout.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Text(message),
+        elevation: 24,
+        shape: const RoundedRectangleBorder(),
+        actions: [
+          TextButton(
+            onPressed: Navigator.of(context).pop,
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ProfileCubit>().loadProfile();
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Perfil'),
@@ -53,7 +73,12 @@ class ProfilePage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Align(
             alignment: Alignment.topCenter,
-            child: BlocBuilder<ProfileCubit, ProfileState>(
+            child: BlocConsumer<ProfileCubit, ProfileState>(
+              listener: (context, state) {
+                if (state is ErrorLoadingProfile) {
+                  _showErrorDialog(context, state.message);
+                }
+              },
               builder: (context, state) {
                 if (state is ProfileLoaded) {
                   return _ProfileCard(profileModel: state.profile);
