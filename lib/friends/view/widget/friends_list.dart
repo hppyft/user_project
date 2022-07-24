@@ -1,7 +1,7 @@
 part of '../friends_page.dart';
 
 class _FriendsList extends StatelessWidget {
-  final List<FriendModel> friends;
+  final List<FriendsModel> friends;
 
   const _FriendsList({
     Key? key,
@@ -15,7 +15,7 @@ class _FriendsList extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       separatorBuilder: (_, __) => const VerticalSpacer(height: 8),
       itemBuilder: (_, index) {
-        FriendModel friend = friends[index];
+        FriendsModel friend = friends[index];
         return DefaultCard(
           child: Row(
             children: [

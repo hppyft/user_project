@@ -1,8 +1,8 @@
-class FriendModel {
+class FriendsModel {
   final String name;
   final String avatarUrl;
 
-  FriendModel({
+  FriendsModel({
     required this.name,
     required this.avatarUrl,
   });

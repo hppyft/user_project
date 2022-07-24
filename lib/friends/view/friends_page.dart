@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:user_project/friends/bloc/friends_cubit.dart';
 import 'package:user_project/friends/bloc/friends_state.dart';
-import 'package:user_project/friends/repository/friend_model.dart';
+import 'package:user_project/friends/repository/friends_model.dart';
 import 'package:user_project/shared/const/ui_colors.dart';
 import 'package:user_project/shared/widget/avatar_image.dart';
 import 'package:user_project/shared/widget/default_card.dart';

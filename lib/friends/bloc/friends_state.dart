@@ -1,4 +1,4 @@
-import 'package:user_project/friends/repository/friend_model.dart';
+import 'package:user_project/friends/repository/friends_model.dart';
 
 abstract class FriendsState {
   const FriendsState();
@@ -9,7 +9,7 @@ class LoadingFriends extends FriendsState {
 }
 
 class FriendsLoaded extends FriendsState {
-  final List<FriendModel> modelList;
+  final List<FriendsModel> modelList;
 
   const FriendsLoaded({required this.modelList});
 }
