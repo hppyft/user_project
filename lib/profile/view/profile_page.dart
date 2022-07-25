@@ -11,6 +11,7 @@ import 'package:user_project/shared/widget/default_card.dart';
 import 'package:user_project/shared/widget/default_drawer/default_drawer.dart';
 import 'package:user_project/shared/widget/default_drawer/default_drawer_item.dart';
 import 'package:user_project/shared/widget/default_error_card.dart';
+import 'package:user_project/shared/widget/horizontal_spacer.dart';
 import 'package:user_project/shared/widget/shimmer_item.dart';
 import 'package:user_project/shared/widget/vertical_spacer.dart';
 

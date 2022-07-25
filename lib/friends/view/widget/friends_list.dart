@@ -10,27 +10,42 @@ class _FriendsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: friends.length,
-      physics: const BouncingScrollPhysics(),
-      separatorBuilder: (_, __) => const VerticalSpacer(height: 8),
-      itemBuilder: (_, index) {
-        FriendsModel friend = friends[index];
-        return DefaultCard(
-          child: Row(
-            children: [
-              AvatarImage(avatarUrl: friend.avatarUrl),
-              const HorizontalSpacer(width: 16),
-              Text(
-                friend.name,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RichText(
+          text: TextSpan(
+            style: const TextStyle(
+              color: UIColors.black,
+              fontSize: 18,
+            ),
+            children: <TextSpan>[
+              const TextSpan(text: 'Você possui '),
+              TextSpan(
+                text: '${friends.length}',
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: UIColors.drawerBlue,
                 ),
               ),
+              const TextSpan(text: ' amigos!'),
             ],
           ),
-        );
-      },
+        ),
+        const VerticalSpacer(height: 8),
+        Expanded(
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemCount: friends.length,
+            physics: const BouncingScrollPhysics(),
+            separatorBuilder: (_, __) => const VerticalSpacer(height: 8),
+            itemBuilder: (_, index) {
+              FriendsModel friend = friends[index];
+              return _FriendsListItem(friend: friend);
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -10,12 +10,20 @@ class _ProfileEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      email,
-      style: const TextStyle(
-        fontSize: 14,
-      ),
-      textAlign: TextAlign.center,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(Icons.email),
+        const HorizontalSpacer(width: 8),
+        Text(
+          email,
+          style: const TextStyle(
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

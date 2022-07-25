@@ -18,6 +18,8 @@ part 'widget/friends_error_layout.dart';
 
 part 'widget/friends_loading_layout.dart';
 
+part 'widget/friends_list_item.dart';
+
 class FriendsPage extends StatelessWidget {
   const FriendsPage({Key? key}) : super(key: key);
 
