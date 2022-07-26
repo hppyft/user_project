@@ -21,4 +21,16 @@ class ProfileModel {
     var picture = firstResult['picture'];
     avatarUrl = picture['thumbnail'];
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ProfileModel &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          email == other.email &&
+          avatarUrl == other.avatarUrl;
+
+  @override
+  int get hashCode => name.hashCode ^ email.hashCode ^ avatarUrl.hashCode;
 }

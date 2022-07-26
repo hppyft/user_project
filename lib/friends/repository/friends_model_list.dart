@@ -17,4 +17,14 @@ class FriendsModelList {
       friends.add(FriendsModel(name: name, avatarUrl: avatarUrl));
     }
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FriendsModelList &&
+          runtimeType == other.runtimeType &&
+          friends == other.friends;
+
+  @override
+  int get hashCode => friends.hashCode;
 }
