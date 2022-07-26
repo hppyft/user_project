@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_project/profile/bloc/profile_cubit.dart';
@@ -12,8 +13,11 @@ class ProfileInjection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<ProfileCubit>(
       create: (context) => ProfileCubit(
-          profileRepository: ProfileRepositoryImplementation(
-              httpClient: context.read<BaseDio>())),
+        profileRepository: ProfileRepositoryImplementation(
+          httpClient: context.read<BaseDio>(),
+        ),
+        connectivity: Connectivity(),
+      ),
       child: const ProfilePage(),
     );
   }

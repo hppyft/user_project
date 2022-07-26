@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_project/friends/bloc/friends_cubit.dart';
@@ -15,6 +16,7 @@ class FriendsInjection extends StatelessWidget {
         repository: FriendsRepositoryImplementation(
           httpClient: context.read<BaseDio>(),
         ),
+        connectivity: Connectivity(),
       ),
       child: const FriendsPage(),
     );

@@ -6,10 +6,14 @@ import 'package:user_project/friends/repository/friends_repository.dart';
 
 class FriendsCubit extends Cubit<FriendsState> {
   final FriendsRepository _repository;
+  final Connectivity _connectivity;
   final int _friendsQuantity = 15;
 
-  FriendsCubit({required FriendsRepository repository})
+  FriendsCubit({required FriendsRepository repository,
+  required Connectivity connectivity,
+  })
       : _repository = repository,
+        _connectivity = connectivity,
         super(const LoadingFriends());
 
   Future<void> reloadFriends() async {
@@ -19,7 +23,7 @@ class FriendsCubit extends Cubit<FriendsState> {
 
   Future<void> loadFriends() async {
     try {
-      bool internetConnection = await hasInternet();
+      bool internetConnection = await _hasInternet();
       if (!internetConnection) {
         emit(const ErrorLoadingFriends(
             message:
@@ -36,8 +40,8 @@ class FriendsCubit extends Cubit<FriendsState> {
     }
   }
 
-  Future<bool> hasInternet() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
+  Future<bool> _hasInternet() async {
+    var connectivityResult = await _connectivity.checkConnectivity();
     return connectivityResult != ConnectivityResult.none;
   }
 }

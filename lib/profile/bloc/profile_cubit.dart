@@ -6,9 +6,13 @@ import 'package:user_project/profile/repository/profile_repository.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   final ProfileRepository _repository;
+  final Connectivity _connectivity;
 
-  ProfileCubit({required ProfileRepository profileRepository})
-      : _repository = profileRepository,
+  ProfileCubit({
+    required ProfileRepository profileRepository,
+    required Connectivity connectivity,
+  })  : _repository = profileRepository,
+        _connectivity = connectivity,
         super(const LoadingProfile());
 
   Future<void> reloadProfile() async {
@@ -18,7 +22,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> loadProfile() async {
     try {
-      bool internetConnection = await hasInternet();
+      bool internetConnection = await _hasInternet();
       if (!internetConnection) {
         emit(const ErrorLoadingProfile(
             message:
@@ -34,8 +38,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<bool> hasInternet() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
+  Future<bool> _hasInternet() async {
+    var connectivityResult = await _connectivity.checkConnectivity();
     return connectivityResult != ConnectivityResult.none;
   }
 }
